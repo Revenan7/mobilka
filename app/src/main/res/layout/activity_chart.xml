@@ -1,63 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Заголовок -->
-    <RelativeLayout
+    <!-- Верхняя панель с заголовком и кнопками -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
 
         <Button
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:text="Назад" />
+            android:text="← Назад" />
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📊 Умные графики"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingStart="8dp" />
+
+        <Button
+            android:id="@+id/btnRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="📊 График метрик"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:text="Обновить" />
+    </LinearLayout>
 
-    </RelativeLayout>
+    <!-- Информация о текущей метрике -->
+    <TextView
+        android:id="@+id/textMetricInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Метрика: "
+        android:textSize="13sp"
+        android:paddingBottom="4dp" />
+
+    <!-- Тип используемого запроса -->
+    <TextView
+        android:id="@+id/textQueryType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Тип запроса: -"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:paddingBottom="8dp"
+        android:textColor="#666666" />
 
     <!-- Выбор метрики -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:gravity="center_vertical"
+        android:paddingBottom="12dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Метрика:"
-            android:textSize="16sp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="8dp" />
+            android:textStyle="bold"
+            android:paddingEnd="8dp" />
 
         <Spinner
             android:id="@+id/metricSpinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/btnRefresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Обновить"
-            android:layout_marginStart="8dp" />
-
     </LinearLayout>
 
     <!-- Статус -->
@@ -65,22 +83,23 @@
         android:id="@+id/textStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Готов к загрузке..." />
+        android:text="Статус: "
+        android:textSize="12sp"
+        android:paddingBottom="8dp" />
 
     <!-- Прогресс бар -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="12dp"
         android:visibility="gone" />
 
     <!-- График -->
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>
